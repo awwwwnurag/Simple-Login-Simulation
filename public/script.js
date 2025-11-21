@@ -34,9 +34,9 @@ async function post(url, data) {
 // Sign In
 formSignin.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const username = document.getElementById("si-username").value.trim();
+  const identifier = document.getElementById("si-identifier").value.trim();
   const password = document.getElementById("si-password").value;
-  const { ok, body } = await post("/login", { username, password });
+  const { ok, body } = await post("/login", { identifier, password });
   siMsg.textContent = body.message || (ok ? "Success" : "Failed");
   siMsg.className = `msg show ${ok ? "ok" : "err"}`;
 });
@@ -47,7 +47,9 @@ formSignup.addEventListener("submit", async (e) => {
   const username = document.getElementById("su-username").value.trim();
   const password = document.getElementById("su-password").value;
   const confirmPassword = document.getElementById("su-confirm").value;
-  const { ok, body } = await post("/signup", { username, password, confirmPassword });
+  const email = document.getElementById("su-email").value.trim();
+  const phone = document.getElementById("su-phone").value.trim();
+  const { ok, body } = await post("/signup", { username, email, phone, password, confirmPassword });
   suMsg.textContent = body.message || (ok ? "Account created" : "Failed");
   suMsg.className = `msg show ${ok ? "ok" : "err"}`;
   if (ok) activate("signin");

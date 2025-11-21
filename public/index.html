@@ -56,20 +56,26 @@
     </div>
 
     <form id="form-signin" class="active">
-      <label for="si-username">Username</label>
-      <input id="si-username" name="username" autocomplete="username" required />
+      <label for="si-identifier">Username or Email</label>
+      <input id="si-identifier" name="identifier" autocomplete="username" required />
       <label for="si-password">Password</label>
       <input id="si-password" name="password" type="password" autocomplete="current-password" required />
       <div class="actions">
         <button type="submit">Sign In</button>
-        <span class="muted">Default: admin / 1234</span>
       </div>
       <div id="si-msg" class="msg" role="status"></div>
     </form>
 
     <form id="form-signup">
       <label for="su-username">Username</label>
-      <input id="su-username" name="username" autocomplete="username" required />
+      <input id="su-username" name="username" autocomplete="username" required minlength="2" />
+
+      <label for="su-email">Email</label>
+      <input id="su-email" name="email" type="email" autocomplete="email" required />
+
+      <label for="su-phone">Phone</label>
+      <input id="su-phone" name="phone" type="tel" autocomplete="tel" required pattern="[0-9]{10}" maxlength="10" inputmode="numeric" />
+
       <label for="su-password">Password</label>
       <input id="su-password" name="password" type="password" autocomplete="new-password" required />
       <label for="su-confirm">Confirm Password</label>
@@ -80,7 +86,6 @@
       <div id="su-msg" class="msg" role="status"></div>
     </form>
 
-    <footer>Session-only demo. Data resets when server restarts.</footer>
   </div>
   <script src="/script.js" type="module"></script>
 </body>
